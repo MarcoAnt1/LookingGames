@@ -5,6 +5,12 @@ namespace Store.Interfaces
 {
     public interface IGameRepository
     {
-        List<Game> Findall();
+        void Delete(long id);
+
+        Game Insert(Game game);
+
+        List<Game> SelectAll();
+
+        Game Update(Game game);
     }
 }

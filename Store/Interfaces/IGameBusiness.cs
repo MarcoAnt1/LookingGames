@@ -5,6 +5,12 @@ namespace Store.Interfaces
 {
     public interface IGameBusiness
     {
-        List<Game> FindAll();
+        void Delete(long id);
+
+        Game Insert(Game game);
+
+        List<Game> SelectAll();
+
+        Game Update(Game game);
     }
 }

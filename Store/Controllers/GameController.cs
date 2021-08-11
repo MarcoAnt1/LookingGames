@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Store.Interfaces;
+using Store.Model;
 
 namespace Store.Controllers
 {
@@ -15,9 +16,34 @@ namespace Store.Controllers
         }
 
         [HttpGet]
-        public IActionResult FindAll()
+        public IActionResult SelectAll()
         {
-            return Ok(gameBusiness.FindAll());
+            return Ok(gameBusiness.SelectAll());
+        }
+
+        [HttpPost]
+        public IActionResult Insert([FromBody] Game game)
+        {
+            if (game == null)
+                return BadRequest();
+
+            return Ok(gameBusiness.Insert(game));
+        }
+
+        [HttpPut]
+        public IActionResult Update([FromBody] Game game)
+        {
+            if (game == null)
+                return BadRequest();
+
+            return Ok(gameBusiness.Update(game));
+        }
+
+        [HttpDelete]
+        public IActionResult Delete(long id)
+        {
+            gameBusiness.Delete(id);
+            return NoContent();
         }
     }
 }
